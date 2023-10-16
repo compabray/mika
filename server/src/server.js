@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const adminRoutes = require('./routes/admin');
+const sFruitRoutes = require('./routes/sFruit');
 
 dotenv.config();
 
@@ -28,6 +29,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // Routes
 app.use('/api/admin', adminRoutes);
+app.use('/api/sfruit', sFruitRoutes);
 
 
 app.listen(port, () => {

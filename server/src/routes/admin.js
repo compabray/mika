@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 
 const Admin = require('../models/admin');
+const { verifyToken } = require('../utils/verifyToken');
 
 require('dotenv').config();
 
@@ -28,21 +29,6 @@ router.post('/login', async (req, res) => {
     return res.json({ message: `${username} logged in`, token});
 })
 
-//Verify token
-
-function verifyToken(req, res, next) {
-    const token = req.headers['authorization'];
-
-    if (!token) {
-        return res.status(401).json({ message: 'No autorizado' });
-    }
-
-    const decoded = jwt.verify(token, process.env.SECRET);
-
-    req.username = decoded.username;
-
-    next();
-}
 
 //Check token
 
