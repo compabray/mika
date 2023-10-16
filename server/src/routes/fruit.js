@@ -1,17 +1,16 @@
 const express = require('express');
 
 const verifyToken = require('../utils/verifyToken');
-const Fruit = require('../models/sFruit');
+const Fruit = require('../models/fruit');
 
 const router = express.Router();
 
 router.post('/add', verifyToken, async (req, res) => {
-    const { name, price, state, offer } = req.body;
+    const { name, price, offer } = req.body;
 
     const fruit = new Fruit({
         name,
         price,
-        state, 
         offer
     });
 
@@ -22,7 +21,7 @@ router.post('/add', verifyToken, async (req, res) => {
 
 router.put('/update', verifyToken, async (req, res) => {
 
-    const { name, price, state, offer } = req.body;
+    const { name, price, offer } = req.body;
 
     const fruit = await Fruit.findOne({ name });
 
@@ -32,10 +31,6 @@ router.put('/update', verifyToken, async (req, res) => {
 
     if (price) {
         fruit.price = price;
-    }
-
-    if (state) {
-        fruit.state = state;
     }
 
     if (offer) {
@@ -53,6 +48,5 @@ router.get('/all', async (req, res) => {
 
     return res.json(fruits);
 })
-
 
 module.exports = router;

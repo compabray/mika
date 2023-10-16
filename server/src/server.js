@@ -5,6 +5,7 @@ const cors = require('cors');
 
 const adminRoutes = require('./routes/admin');
 const sFruitRoutes = require('./routes/sFruit');
+const fruitRoutes = require('./routes/fruit');
 
 dotenv.config();
 
@@ -30,6 +31,7 @@ app.use(express.urlencoded({ extended: false }));
 // Routes
 app.use('/api/admin', adminRoutes);
 app.use('/api/sfruit', sFruitRoutes);
+app.use('/api/fruit', fruitRoutes);
 
 
 app.listen(port, () => {
