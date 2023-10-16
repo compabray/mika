@@ -18,10 +18,10 @@ router.post('/login', async (req, res) => {
     const user = await Admin.findOne({ username: username }); 
 
     if (!user) {
-        return res.status(400).json({ message: 'User not found' });
+        return res.status(400).json({ message: 'Usuario no existente' });
     }
     if (password !== user.password) {
-        return res.status(400).json({ message: 'Incorrect password' });
+        return res.status(400).json({ message: 'Contraseña incorrecta' });
     }
 
     const token = jwt.sign({username}, process.env.SECRET);
