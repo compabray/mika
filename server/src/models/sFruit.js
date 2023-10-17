@@ -20,6 +20,10 @@ const sFruitSchema = new Schema({
         type: Boolean,
         required: true
     },
+    oldPrice: {
+        type: Number,
+        
+    },
 });
 
 const sFruit = mongoose.model('SFruit', sFruitSchema);

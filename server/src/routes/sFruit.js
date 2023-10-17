@@ -22,7 +22,7 @@ router.post('/add', verifyToken, async (req, res) => {
 
 router.put('/update', verifyToken, async (req, res) => {
 
-    const { name, price, state, offer } = req.body;
+    const { name, price, state, offer, oldPrice } = req.body;
 
     const fruit = await Fruit.findOne({ name });
 
@@ -40,6 +40,10 @@ router.put('/update', verifyToken, async (req, res) => {
 
     if (offer) {
         fruit.offer = offer;
+    }
+
+    if (oldPrice) {
+        fruit.oldPrice = oldPrice;
     }
 
     await fruit.save();
