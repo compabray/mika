@@ -46,7 +46,7 @@ function Catalogo() {
             <div className='w-2/3 flex flex-wrap justify-evenly m-auto mt-8'>
                 {sortedFruits.map((f, index) => (
                     <div className={`relative w-1/6 m-2`} key={index}>
-                        {f.offer && <div className="bg-blue-500  text-white text-xs font-bold uppercase absolute top-0 left-0 px-2 py-1">Oferta</div>}
+                        {f.offer && <div className="bg-blue-800  text-white text-xs font-bold uppercase absolute top-0 left-0 px-2 py-1">Oferta</div>}
                         <img src={fruitImg[f.name]} alt={f.name}/>
                         <h3 className='mt-2 text-xl text-center text-gray-800 font-semibold'>{f.name.charAt(0).toUpperCase() + f.name.slice(1).toLowerCase()}</h3>
                         <p className='text-lg font-normal text-gray-700 text-center'>

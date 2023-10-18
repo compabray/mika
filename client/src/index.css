@@ -4,6 +4,19 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+.navB {
+  transition: all;
+  transition-duration: 0.6s;
+  transform: translateX( 100vw);
+}
+
+
+
+.nav {
+  transform: translate(0);
+  transition: all;
+  transition-duration: 0.6s;
+}
 
 body {
   margin: 0;
