@@ -16,7 +16,7 @@ const Login = () => {
                 password,
             });
             localStorage.setItem('token', response.data.token); // store token in local storage
-            navigate("/"); // redirect to homepage
+            navigate("/admin"); // redirect to admin
         } catch (error) {
             setError(error.response.data.message);
         }

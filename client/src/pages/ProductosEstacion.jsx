@@ -35,7 +35,7 @@ function Catalogo() {
         <div className='w-full'> 
         
             <h1 className='w-full text-center text-4xl font-bold text-gray-900'>Frutas y verduras de estacion</h1>
-            <h2 className='w-full text-center text-xl text-gray-700 mt-5'>Aquí estan todas las frutas y verduras de estacion disponibles en nuestro negocio! </h2>
+            <h2 className='w-full text-center text-xl text-gray-700 mt-5'>Aquí estan todas las frutas y verduras de estacion disponibles en nuestro  negocio! </h2>
             <div className='w-2/3 flex flex-wrap justify-evenly m-auto mt-8'>
                 {sortedFruits.map((f, index) => (
                     <div className={`relative w-1/6 m-2`} key={index}>
