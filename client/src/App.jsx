@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home"
 import Login from "./pages/Login"
 import Catalogo from "./pages/Catalogo";
+import ProductosEstacionales from "./pages/ProductosEstacion";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path='/' element={<Home/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/catalogo' element={<Catalogo/>}/>
+          <Route path='/productos-estacionales' element={<ProductosEstacionales/>}/>
           <Route path='*' element={<Navigate to='/'/>}/>
         </Routes>
         </div>
