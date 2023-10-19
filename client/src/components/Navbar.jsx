@@ -19,7 +19,7 @@ function Navbar() {
 
   return (
     <header>
-        <nav className="fixed bg-gray-50 top-0 w-full flex justify-between items-center h-16 border border-transparent border-b-gray-200 text-black shadow-sm" role="navigation">
+        <nav className="fixed z-50 bg-gray-50 top-0 w-full flex justify-between items-center h-16 border border-transparent border-b-gray-200 text-black shadow-sm" role="navigation">
             <Link to="/" className='flex align-middle'>
                 <h2 className='text-xl lg:text-2xl text-blue-500 font-semibold h-full ml-3 '>SIN FRONTERAS</h2>
             </Link> 

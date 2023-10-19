@@ -9,6 +9,7 @@ import Admin from "./pages/Admin"
 
 import Catalogo from "./pages/Catalogo";
 import ProductosEstacionales from "./pages/ProductosEstacion";
+import AdminCat from "./pages/AdminCat";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path='/login' element={<Login/>}/>
           <Route path='/admin' element={<Admin/>}/>
           <Route path='/catalogo' element={<Catalogo/>}/>
+          <Route path='/admin/catalogo' element={<AdminCat/>}/>
           <Route path='/productos-estacionales' element={<ProductosEstacionales/>}/>
           <Route path='*' element={<Navigate to='/'/>}/>
         </Routes>
