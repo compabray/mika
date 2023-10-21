@@ -23,7 +23,7 @@ function Catalogo() {
     }, [])
 
     const concatAndSort = () => {
-        const combinedFruits = [...fruit, ...sFruit];
+        const combinedFruits = [...fruit, ...sFruit.filter(f => f.state === true)];
         combinedFruits.sort((a, b) => {
             if (a.offer && !b.offer) {
                 return -1;
