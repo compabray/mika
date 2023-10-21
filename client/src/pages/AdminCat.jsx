@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import fruitImg from "../assets/fruitImg";
+import FruitEditor from "../components/FruitEdior";
 
 function AdminCat () {
 
@@ -46,8 +47,8 @@ function AdminCat () {
 
         <div className='w-full'> 
             <h1 className="w-full text-center text-4xl font-bold text-gray-900">Modifica las frutas y verduras del catalogo</h1>
-            <div className="w-11/12 m-auto mt-8 bg-green-300">
-                <div className="w-2/3 flex flex-wrap bg-red-300">
+            <div className="w-11/12 m-auto mt-8 flex flex-wrap justify-around">
+                <div className="w-2/3 flex flex-wrap bg-gray-100">
                     {sortedFruits.map((f, index) => (
                         <div className={`relative w-1/6 m-2 cursor-pointer ${activate === f._id && "border-2 p-1 rounded-md border-blue-800"}`} key={index} onClick={() => handleFruitClick(f._id)}>
                             {f.offer && <div className="bg-blue-800  text-white text-xs font-bold uppercase absolute top-0 left-0 px-2 py-1">Oferta</div>}
@@ -59,6 +60,9 @@ function AdminCat () {
                         </div>
                     ))}
                 </div>
+                
+                <FruitEditor id={activate} fruit={sortedFruits.find(f => f._id === activate)}/>
+
             </div>
         </div>
 
