@@ -8,6 +8,8 @@ function AdminCat () {
     const [fruit, setFruit] = useState([]);
     const [sFruit, setSFruit] = useState([]);
     const [activate, setActivate] = useState(null);
+    const [success, setSuccess] = useState(false);
+    
 
     const token = localStorage.getItem('token');
 
@@ -23,28 +25,8 @@ function AdminCat () {
                 setSFruit(res.data);
             })
             .catch(err => console.log(err))
-    }, [])
+    }, [success])
 
-    const updateFruit = (updatedFruit) => {
-        // Find the index of the updated fruit in the fruit array
-        if(updatedFruit.hasOwnProperty('state')) {
-        const index = sFruit.findIndex(f => f._id === updatedFruit._id);
-        if (index !== -1) {
-            // Create a new array with the updated fruit
-            const updatedFruits = [...fruit];
-            updatedFruits[index] = updatedFruit;
-            setFruit(updatedFruits);
-        }
-        } else {
-            const index = fruit.findIndex(f => f._id === updatedFruit._id);
-            if (index !== -1) {
-                // Create a new array with the updated fruit
-                const updatedFruits = [...fruit];
-                updatedFruits[index] = updatedFruit;
-                setFruit(updatedFruits);
-            }
-        }
-    };
 
     const concatAndSort = () => {
         const combinedFruits = [...fruit, ...sFruit];
@@ -84,7 +66,7 @@ function AdminCat () {
                     ))}
                 </div>
                 
-                <FruitEditor token={token} id={activate} fruit={sortedFruits.find(f => f._id === activate)} updateFruit={updateFruit}/>
+                <FruitEditor token={token} id={activate} fruit={sortedFruits.find(f => f._id === activate)} success={success} setSuccess={setSuccess} />
 
             </div>
         </div>

@@ -5,12 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPen } from "@fortawesome/free-solid-svg-icons";
 
 
-function FruitEditor({id, fruit, token, updateFruit}) {
+function FruitEditor({id, fruit, token, setSuccess, success}) {
     const [price, setPrice] = useState(0);
     const [oldPrice, setOldPrice] = useState(0);
     const [offer, setOffer] = useState(false);
     const [state, setState] = useState(null);
-    const [success, setSuccess] = useState(false);
 
 // Reset the form when the id changes 
     useEffect(() => {
@@ -49,7 +48,7 @@ function FruitEditor({id, fruit, token, updateFruit}) {
                 }
             })
                 .then(res => {
-                    // updateFruit(res.data);
+
                     setSuccess(true);
                     setTimeout(() => {
                         setSuccess(false);
@@ -63,7 +62,7 @@ function FruitEditor({id, fruit, token, updateFruit}) {
                     }
                 })
                     .then(res => {
-                        // updateFruit(res.data);
+
                         setSuccess(true);
                         setTimeout(() => {
                             setSuccess(false);
@@ -116,7 +115,7 @@ function FruitEditor({id, fruit, token, updateFruit}) {
                             No
                         </button>
                     </div>
-                    {fruit.state ? (
+                    {fruit.hasOwnProperty("state") ? (
                          <><h3 className="w-full text-gray-500 mt-8">¿El producto esta activo?</h3>     
                          <div className="mt-3 relative w-2/3 m-auto bg-gray-300 rounded-lg border border-gray-500">
                              <div className={`absolute w-1/2 h-full transform duration-100 ${state === true ? " bg-green-400 rounded-l-lg" : "rounded-r-lg translate-x-full bg-red-500 "}`}></div> 
