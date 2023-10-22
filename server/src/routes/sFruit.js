@@ -30,21 +30,12 @@ router.put('/update', verifyToken, async (req, res) => {
         return res.status(404).json({ message: 'Fruit not found' });
     }
 
-    if (price) {
-        fruit.price = price;
-    }
-
-    if (state) {
-        fruit.state = state;
-    }
-
-    if (offer) {
-        fruit.offer = offer;
-    }
-
-    if (oldPrice) {
-        fruit.oldPrice = oldPrice;
-    }
+    fruit.name = name;
+    fruit.price = price;
+    fruit.state = state;
+    fruit.offer = offer;
+    fruit.oldPrice = oldPrice;
+    
 
     await fruit.save();
 

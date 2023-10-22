@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import fruitImg from "../assets/fruitImg";
-import FruitEditor from "../components/FruitEdior";
+import FruitEditor from "../components/FruitEditor";
 
 function AdminCat () {
 
     const [fruit, setFruit] = useState([]);
     const [sFruit, setSFruit] = useState([]);
     const [activate, setActivate] = useState(null);
+
+    const token = localStorage.getItem('token');
 
     useEffect(() => {
         axios.get('http://localhost:5000/api/fruit/all')
@@ -22,6 +24,27 @@ function AdminCat () {
             })
             .catch(err => console.log(err))
     }, [])
+
+    const updateFruit = (updatedFruit) => {
+        // Find the index of the updated fruit in the fruit array
+        if(updatedFruit.hasOwnProperty('state')) {
+        const index = sFruit.findIndex(f => f._id === updatedFruit._id);
+        if (index !== -1) {
+            // Create a new array with the updated fruit
+            const updatedFruits = [...fruit];
+            updatedFruits[index] = updatedFruit;
+            setFruit(updatedFruits);
+        }
+        } else {
+            const index = fruit.findIndex(f => f._id === updatedFruit._id);
+            if (index !== -1) {
+                // Create a new array with the updated fruit
+                const updatedFruits = [...fruit];
+                updatedFruits[index] = updatedFruit;
+                setFruit(updatedFruits);
+            }
+        }
+    };
 
     const concatAndSort = () => {
         const combinedFruits = [...fruit, ...sFruit];
@@ -61,7 +84,7 @@ function AdminCat () {
                     ))}
                 </div>
                 
-                <FruitEditor id={activate} fruit={sortedFruits.find(f => f._id === activate)}/>
+                <FruitEditor token={token} id={activate} fruit={sortedFruits.find(f => f._id === activate)} updateFruit={updateFruit}/>
 
             </div>
         </div>
