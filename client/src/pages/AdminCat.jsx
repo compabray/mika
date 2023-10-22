@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import fruitImg from "../assets/fruitImg";
 import FruitEditor from "../components/FruitEditor";
+import setAuthHeader from "../utils/setAuthHeader";
+
 
 function AdminCat () {
 
+    const navigate = useNavigate();
     const [fruit, setFruit] = useState([]);
     const [sFruit, setSFruit] = useState([]);
     const [activate, setActivate] = useState(null);
@@ -12,6 +16,35 @@ function AdminCat () {
     
 
     const token = localStorage.getItem('token');
+
+
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        if(token === null || token === undefined) {
+           navigate('/login')
+        }
+        else if (token){
+    
+            const checkToken = async () => {
+                try {
+                    const res = await axios.post('http://localhost:5000/api/admin/checkToken', {
+                        token: token
+                    });
+            
+                    if (res.data.state === false) {
+                        navigate('/login');
+                    } else if (res.data.state === true) {
+                        setAuthHeader(token);
+                    }
+                } catch (error) {
+                    console.error("An error occurred:", error);
+                    // Handle the error as needed
+                }
+            };
+        checkToken()
+
+        }
+    }, [navigate, token])
 
     useEffect(() => {
         axios.get('http://localhost:5000/api/fruit/all')

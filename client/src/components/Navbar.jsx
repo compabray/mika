@@ -1,14 +1,45 @@
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { Link, useLocation } from 'react-router-dom';
-
+import { faBars, faTimes, faUserGear, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Navbar() {
 
+    const navigate = useNavigate();
     const location = useLocation();
     const [click, setClick] = useState(false);
     const [activeSection, setActiveSection] = useState('');
+    const [admin, setAdmin] = useState(false);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        if(token === null || token === undefined) {
+           setAdmin(false);
+        }
+        else if (token){
+    
+            const checkToken = async () => {
+                try {
+                    const res = await axios.post('http://localhost:5000/api/admin/checkToken', {
+                        token: token
+                    });
+            
+                    if (res.data.state === false) {
+                        setAdmin(false);
+                    } else if (res.data.state === true) {
+                        setAdmin(true);
+                    }
+                } catch (error) {
+                    console.error("An error occurred:", error);
+                    // Handle the error as needed
+                }
+            };
+        checkToken()
+
+        }
+    }, [admin, location])
+
 
     useEffect(() => {
         setActiveSection(location.pathname);
@@ -16,6 +47,21 @@ function Navbar() {
 
 
     const handleClick = () => setClick(!click);
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        setAdmin(false);
+        navigate('/');
+    }
+
+    const routeList = <>
+                <a href="/" className={`p-4 hover:text-blue-500 duration-200 ${activeSection === "/" ? "text-blue-500" : null }`}>Inicio</a>
+                <a href="/catalogo" className={`p-4 hover:text-blue-500 duration-200 ${activeSection === "/catalogo" ? "text-blue-500" : null }`}>Catalogo</a>
+                <a href="/productos-estacionales" className={`p-4 hover:text-blue-500 duration-200 ${activeSection === "/productos-estacionales" ? "text-blue-500" : null }`}>Productos estacionales</a>
+                <a href="/contacto" className={`p-4 hover:text-blue-500 duration-200 ${activeSection === "/contacto" ? "text-blue-500" : null }`}>Contacto</a>
+                {admin && <a href="/admin" className={`ml-16 p-2 hover:text-blue-500 duration-200 ${activeSection === "/admin" ? "text-blue-500" : null }`}> <FontAwesomeIcon icon={faUserGear} className='text-xl text-blue-600'/> Admin</a>}
+                {admin && <button className='ml-4 p-2 hover:text-blue-500 duration-200' onClick={handleLogout}><FontAwesomeIcon icon={faRightFromBracket} className='text-xl text-blue-700'/> Cerrar sesión</button>}
+    </>
 
   return (
     <header>
@@ -28,16 +74,10 @@ function Navbar() {
                 {click ? <FontAwesomeIcon icon={faTimes}/> : <FontAwesomeIcon icon={faBars}/>}
             </div>
             <div className={`flex flex-col absolute top-0 right-0 left-0 h-screen bg-items-center justify-center text-center bg-gray-50 text-xl md:hidden ${click ? 'nav' : 'navB'}`}>
-                <a href="/" className={`p-4 hover:text-blue-500 duration-200 ${activeSection === "/" ? "text-blue-500" : null }`}>Inicio</a>
-                <a href="/catalogo" className={`p-4 hover:text-blue-500 duration-200 ${activeSection === "/catalogo" ? "text-blue-500" : null }`}>Catalogo</a>
-                <a href="/productos-estacionales" className={`p-4 hover:text-blue-500 duration-200 ${activeSection === "/productos-estacionales" ? "text-blue-500" : null }`}>Productos estacionales</a>
-                <a href="/contacto" className={`p-4 hover:text-blue-500 duration-200 ${activeSection === "/contacto" ? "text-blue-500" : null }`}>Contacto</a>
+                {routeList}
             </div>
             <div className="pr-8 md:block hidden">
-                <a href="/" className={`p-4 hover:text-blue-500 duration-200 ${activeSection === "/" ? "text-blue-500" : null }`}>Inicio</a>
-                <a href="/catalogo" className={`p-4 hover:text-blue-500 duration-200 ${activeSection === "/catalogo" ? "text-blue-500" : null }`}>Catalogo</a>
-                <a href="/productos-estacionales" className={`p-4 hover:text-blue-500 duration-200 ${activeSection === "/productos-estacionales" ? "text-blue-500" : null }`}>Productos estacionales</a>
-                <a href="/contacto" className={`p-4 hover:text-blue-500 duration-200 ${activeSection === "/contacto" ? "text-blue-500" : null }`}>Contacto</a>
+                {routeList}
             </div>
         </nav>
     </header>
