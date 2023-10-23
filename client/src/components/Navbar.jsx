@@ -55,12 +55,12 @@ function Navbar() {
     }
 
     const routeList = <>
-                <a href="/" className={`p-4 hover:text-blue-500 duration-200 ${activeSection === "/" ? "text-blue-500" : null }`}>Inicio</a>
-                <a href="/catalogo" className={`p-4 hover:text-blue-500 duration-200 ${activeSection === "/catalogo" ? "text-blue-500" : null }`}>Catalogo</a>
-                <a href="/productos-estacionales" className={`p-4 hover:text-blue-500 duration-200 ${activeSection === "/productos-estacionales" ? "text-blue-500" : null }`}>Productos estacionales</a>
-                <a href="/contacto" className={`p-4 hover:text-blue-500 duration-200 ${activeSection === "/contacto" ? "text-blue-500" : null }`}>Contacto</a>
-                {admin && <a href="/admin" className={`ml-16 p-2 hover:text-blue-500 duration-200 ${activeSection === "/admin" ? "text-blue-500" : null }`}> <FontAwesomeIcon icon={faUserGear} className='text-xl text-blue-600'/> Admin</a>}
-                {admin && <button className='ml-4 p-2 hover:text-blue-500 duration-200' onClick={handleLogout}><FontAwesomeIcon icon={faRightFromBracket} className='text-xl text-blue-700'/> Cerrar sesión</button>}
+                <a href="/" className={`p-4 lg:text-sm xl:text-base hover:text-blue-500 duration-200 ${activeSection === "/" ? "text-blue-500" : null }`}>Inicio</a>
+                <a href="/catalogo" className={`p-4 lg:text-sm xl:text-base hover:text-blue-500 duration-200 ${activeSection === "/catalogo" ? "text-blue-500" : null }`}>Catalogo</a>
+                <a href="/productos-estacionales" className={`p-4 lg:text-sm xl:text-base hover:text-blue-500 duration-200 ${activeSection === "/productos-estacionales" ? "text-blue-500" : null }`}>Productos estacionales</a>
+                <a href="/contacto" className={`p-4 lg:text-sm xl:text-base hover:text-blue-500 duration-200 ${activeSection === "/contacto" ? "text-blue-500" : null }`}>Contacto</a>
+                {admin && <a href="/admin" className={`mt-8 lg:text-sm xl:text-base lg:mt-0 xl:ml-16 p-2 hover:text-blue-500 duration-200 ${activeSection === "/admin" ? "text-blue-500" : null }`}> <FontAwesomeIcon icon={faUserGear} className='text-xl text-blue-600'/> Admin</a>}
+                {admin && <button className='xl:ml-4 lg:text-sm  xl:text-base p-2 hover:text-blue-500 duration-200' onClick={handleLogout}><FontAwesomeIcon icon={faRightFromBracket} className='text-xl text-blue-700'/> Cerrar sesión</button>}
     </>
 
   return (
@@ -69,14 +69,14 @@ function Navbar() {
             <Link to="/" className='flex align-middle'>
                 <h2 className='text-xl lg:text-2xl text-blue-500 font-semibold h-full ml-3 '>SIN FRONTERAS</h2>
             </Link> 
-            
-            <div className="px-4 cursor-pointer absolute top-4 right-4 z-40 text-yellow-600 text-2xl md:hidden" onClick={handleClick}>
+
+            <div className="px-4 cursor-pointer absolute top-4 right-4 z-40 text-blue-600 text-2xl lg:hidden" onClick={handleClick}>
                 {click ? <FontAwesomeIcon icon={faTimes}/> : <FontAwesomeIcon icon={faBars}/>}
             </div>
-            <div className={`flex flex-col absolute top-0 right-0 left-0 h-screen bg-items-center justify-center text-center bg-gray-50 text-xl md:hidden ${click ? 'nav' : 'navB'}`}>
+            <div className={`flex flex-col absolute top-0 right-0 left-0 h-screen bg-items-center justify-center text-center bg-gray-50 text-xl lg:hidden ${click ? 'nav' : 'navB'}`}>
                 {routeList}
             </div>
-            <div className="pr-8 md:block hidden">
+            <div className="pr-8 lg:block hidden">
                 {routeList}
             </div>
         </nav>

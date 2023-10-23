@@ -75,18 +75,18 @@ function FruitEditor({id, fruit, token, setSuccess, success}) {
 
 
     return(
-        <div className="w-1/4 bg-gray-200 py-5 px-3">
+        <div className="w-11/12 sm:w-2/3 h-fit lg:h-full mb-6 lg:mb-0 m-auto rounded-md lg:w-1/3 xl:w-1/4 bg-gray-200 py-5 px-3">
             {id === null ? (
-                <div className="">
-                    <h3 className="text-5xl text-center mt-8 p-4 font-semibold text-gray-700">Edita un producto</h3>
-                    <p className="text-lg text-center p-4 text-gray-500">Para poder editar un producto, debes seleccionarlo haciendo click sobre el.</p>
+                <>
+                    <h3 className="text-3xl md:text-5xl text-center mt-8 p-4 font-semibold text-gray-700">Edita un producto</h3>
+                    <p className="text-md md:text-lg text-center p-4 text-gray-500">Para poder editar un producto, debes seleccionarlo haciendo click sobre el.</p>
 
-                    <FontAwesomeIcon icon={faUserPen} className="text-8xl w-full text-center text-gray-400 mt-8"/>
-                </div>
+                    <FontAwesomeIcon icon={faUserPen} className="text-8xl lg:text-8xl w-full text-center text-gray-400 mt-8"/>
+                </>
             ) : (
                 <div className="">
                     <img className="w-3/5 mt-4 m-auto" src={fruitImg[fruit.name]} alt={fruit.name}/>
-                    <h3 className="text-3xl text-center font-semibold text-gray-700">{fruit.name.charAt(0).toUpperCase() + fruit.name.slice(1).toLowerCase()}</h3>
+                    <h3 className="text-2xl xl:text-3xl text-center font-semibold text-gray-700">{fruit.name.charAt(0).toUpperCase() + fruit.name.slice(1).toLowerCase()}</h3>
                     <form className="w-full flex flex-wrap" onSubmit={
                         (e) => handleFormSubmit(e)
                     }>

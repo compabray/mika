@@ -6,10 +6,9 @@ import FruitEditor from "../components/FruitEditor";
 import setAuthHeader from "../utils/setAuthHeader";
 
 
-function AdminCat () {
+function AdminSF () {
 
     const navigate = useNavigate();
-    const [fruit, setFruit] = useState([]);
     const [sFruit, setSFruit] = useState([]);
     const [activate, setActivate] = useState(null);
     const [success, setSuccess] = useState(false);
@@ -47,12 +46,6 @@ function AdminCat () {
     }, [navigate, token])
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/fruit/all')
-            .then(res => {
-                setFruit(res.data);
-            })
-            .catch(err => console.log(err))
-
         axios.get('http://localhost:5000/api/sfruit/all')
             .then(res => {
                 setSFruit(res.data);
@@ -62,7 +55,7 @@ function AdminCat () {
 
 
     const concatAndSort = () => {
-        const combinedFruits = [...fruit, ...sFruit];
+        const combinedFruits = [...sFruit];
         combinedFruits.sort((a, b) => {
             if (a.offer && !b.offer) {
                 return -1;
@@ -84,7 +77,7 @@ function AdminCat () {
     return (
 
         <div className='w-full'> 
-            <h1 className="w-full text-center text-3xl lg:text-4xl font-bold text-gray-900">Modifica las frutas y verduras del catalogo</h1>
+            <h1 className="w-full text-center text-3xl lg:text-4xl font-bold text-gray-900">Modifica las frutas y verduras de estación</h1>
             <div className="lg:w-11/12 lg:h-[60vh] m-auto mt-8 flex-col-reverse lg:flex-row flex flex-wrap justify-around">
                 <div className="w-10/12 lg:w-7/12 xl:w-2/3 m-auto flex flex-wrap justify-around lg:justify-normal mt-4 h-[50vh] lg:h-full bg-gray-100 overflow-y-scroll">
                     {sortedFruits.map((f, index) => (
@@ -108,4 +101,4 @@ function AdminCat () {
 
 }
 
-export default AdminCat;
+export default AdminSF;

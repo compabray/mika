@@ -10,6 +10,7 @@ import Admin from "./pages/Admin"
 import Catalogo from "./pages/Catalogo";
 import ProductosEstacionales from "./pages/ProductosEstacion";
 import AdminCat from "./pages/AdminCat";
+import AdminSF from "./pages/AdminSF";
 
 function App() {
   return (
@@ -17,14 +18,21 @@ function App() {
 
       <Navbar/>
 
-      <div className='flex-grow mt-24'>
+      <div className='flex-grow mt-24 p-2'>
         <Routes>
+          {/* Rutas publicas */}
           <Route path='/' element={<Home/>}/>
+          <Route path='/catalogo' element={<Catalogo/>}/>
+          <Route path='/productos-estacionales' element={<ProductosEstacionales/>}/>
+
+          {/* Rutas privadas */}
           <Route path='/login' element={<Login/>}/>
           <Route path='/admin' element={<Admin/>}/>
-          <Route path='/catalogo' element={<Catalogo/>}/>
           <Route path='/admin/catalogo' element={<AdminCat/>}/>
-          <Route path='/productos-estacionales' element={<ProductosEstacionales/>}/>
+          <Route path='/admin/productos-estacion' element={<AdminSF/>}/>
+
+          {/* Ruta por defecto */}
+
           <Route path='*' element={<Navigate to='/'/>}/>
         </Routes>
         </div>

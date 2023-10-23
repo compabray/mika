@@ -43,18 +43,18 @@ function Admin () {
 
     return (
         <div className="">
-            <h1 className="w-full text-center text-5xl text-blue-700 font-semibold">Panel de administración</h1>
-            <h2 className="w-full text-center text-lg text-gray-500 mt-5">Aquí que están todas tus herramientas como administrador, de esta forma podras modificar el contenido de tu página!</h2>
+            <h1 className="w-full text-center text-2xl lg:text-5xl text-blue-700 font-semibold">Panel de administración</h1>
+            <h2 className="w-full text-center text-md lg:text-lg text-gray-500 mt-5">Aquí que están todas tus herramientas como administrador, de esta forma podras modificar el contenido de tu página!</h2>
 
-            <div className="mt-16 w-3/4 m-auto flex justify-evenly flex-wrap">
-                <div className="w-1/5 flex flex-col flex-wrap justify-center border rounded-lg">
+            <div className="mt-16 lg:w-3/4 m-auto flex flex-col lg:flex-row justify-evenly flex-wrap">
+                <div className="w-2/3 m-auto lg:w-1/5 flex flex-col flex-wrap justify-center border rounded-lg">
                     <FontAwesomeIcon icon={faFileSignature} className=" py-5 text-center text-7xl ml-5 text-blue-700"/>
-                    <h3 className="text-center py-4 text-xl text-gray-700">Frutas y verduras del catalogo</h3>
+                    <h3 className="text-center py-4 text-lg lg:text-xl text-gray-700">Frutas y verduras del catalogo</h3>
                     <Link to="/admin/catalogo" className="w-full bg-blue-700 text-white text-center py-3 rounded-b-lg hover:bg-blue-800">Editar el catalogo</Link>
                 </div>
-                <div className="w-1/5 flex flex-col flex-wrap justify-center border rounded-lg">
+                <div className="w-2/3 mt-8 m-auto lg:mt-0 lg:w-1/5 flex flex-col flex-wrap justify-center border rounded-lg">
                     <FontAwesomeIcon icon={faCloudSun} className=" py-5 text-center text-7xl ml-5 text-blue-700"/>
-                    <h3 className="text-center py-4 text-xl text-gray-700">Frutas y verduras de estacion</h3>
+                    <h3 className="text-center py-4 text-lg lg:text-xl text-gray-700">Frutas y verduras de estacion</h3>
                     <Link to="/admin/productos-estacion" className="w-full bg-blue-700 text-white text-center py-3 rounded-b-lg hover:bg-blue-800">Editar productos de estacion</Link>
                 </div>
 
