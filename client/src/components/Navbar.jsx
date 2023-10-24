@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes, faUserGear, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import logo from '../assets/logo_nb.png';
 
 function Navbar() {
 
@@ -65,9 +66,9 @@ function Navbar() {
 
   return (
     <header>
-        <nav className="fixed z-50 bg-gray-50 top-0 w-full flex justify-between items-center h-16 border border-transparent border-b-gray-200 text-black shadow-sm" role="navigation">
+        <nav className="fixed z-50 bg-gray-50 top-0 w-full flex justify-between items-center h-24 border border-transparent border-b-gray-200 text-black shadow-sm" role="navigation">
             <Link to="/" className='flex align-middle'>
-                <h2 className='text-xl lg:text-2xl text-blue-500 font-semibold h-full ml-3 '>SIN FRONTERAS</h2>
+                <img src={logo} className='h-20 ml-4' alt="" />
             </Link> 
 
             <div className="px-4 cursor-pointer absolute top-4 right-4 z-40 text-blue-600 text-2xl lg:hidden" onClick={handleClick}>
