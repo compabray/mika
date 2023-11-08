@@ -19,6 +19,10 @@ const fruitSchema = new Schema({
     oldPrice: {
         type: Number,
     },
+    cantidad: {
+        type: String,
+        
+    },
 });
 
 const fruit = mongoose.model('Fruit', fruitSchema);

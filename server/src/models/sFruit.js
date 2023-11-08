@@ -21,7 +21,10 @@ const sFruitSchema = new Schema({
         required: true
     },
     oldPrice: {
-        type: Number,
+        type: Number,   
+    },
+    cantidad: {
+        type: String,
         
     },
 });
