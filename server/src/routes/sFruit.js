@@ -6,13 +6,14 @@ const Fruit = require('../models/sFruit');
 const router = express.Router();
 
 router.post('/add', verifyToken, async (req, res) => {
-    const { name, price, state, offer } = req.body;
+    const { name, price, state, offer, cantidad } = req.body;
 
     const fruit = new Fruit({
         name,
         price,
         state, 
-        offer
+        offer,
+        cantidad
     });
 
     await fruit.save();

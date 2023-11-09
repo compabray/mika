@@ -91,7 +91,7 @@ function AdminCat () {
                     {sortedFruits.map((f, index) => (
                         <div className={`relative w-5/12 sm:w-1/4 xl:w-1/6 m-2 h-fit cursor-pointer ${activate === f._id && "border-2 p-1 rounded-md border-blue-800"}`} key={index} onClick={() => handleFruitClick(f._id)}>
                             {f.offer && <div className="bg-blue-800  text-white text-xs font-bold uppercase absolute top-0 left-0 px-2 py-1">Oferta</div>}
-                            <img src={fruitImg[f.name]} alt={f.name}/>
+                            <img src={fruitImg[f.name.toLowerCase()]} alt={f.name}/>
                             <h3 className='mt-2 text-md lg:text-lg text-center text-gray-800 font-medium'>
                             {f.name.charAt(0).toUpperCase() + f.name.slice(1).toLowerCase()}
                             {f.cantidad && f.cantidad != 0 && f.cantidad != "0" ?  <span className='font-normal'> {" "}({cantidadTransform(`${f.cantidad}`)})</span> : null}

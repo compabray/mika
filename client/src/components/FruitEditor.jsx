@@ -88,7 +88,7 @@ function FruitEditor({id, fruit, token, setSuccess, success}) {
                 </>
             ) : (
                 <div className="">
-                    <img className="w-3/5 mt-4 m-auto" src={fruitImg[fruit.name]} alt={fruit.name}/>
+                    <img className="w-3/5 mt-4 m-auto" src={fruitImg[fruit.name.toLowerCase()]} alt={fruit.name}/>
                     <h3 className="text-2xl xl:text-3xl text-center font-semibold text-gray-700">{fruit.name.charAt(0).toUpperCase() + fruit.name.slice(1).toLowerCase()}</h3>
                     <form className="w-full flex flex-wrap" onSubmit={
                         (e) => handleFormSubmit(e)
