@@ -10,7 +10,7 @@ function FruitEditor({id, fruit, token, setSuccess, success}) {
     const [oldPrice, setOldPrice] = useState(0);
     const [offer, setOffer] = useState(false);
     const [state, setState] = useState(null);
-
+    const [cantidad, setCantidad] = useState(0);
 // Reset the form when the id changes 
     useEffect(() => {
         if (fruit) {
@@ -18,6 +18,7 @@ function FruitEditor({id, fruit, token, setSuccess, success}) {
             setOldPrice(fruit.oldPrice ? fruit.oldPrice : "");
             setOffer(fruit.offer);
             setState(fruit.state);
+            setCantidad(fruit.cantidad ? fruit.cantidad : "");
         }
 
     }, [id, fruit]);
@@ -31,14 +32,16 @@ function FruitEditor({id, fruit, token, setSuccess, success}) {
             price,
             oldPrice,
             offer,
-            state
+            state,
+            cantidad
         }
 
         const fruitData = {
             name: fruit.name,
             price,
             oldPrice,
-            offer
+            offer,
+            cantidad
         }
         
         if(fruit.hasOwnProperty('state')) {
@@ -75,7 +78,7 @@ function FruitEditor({id, fruit, token, setSuccess, success}) {
 
 
     return(
-        <div className="w-11/12 sm:w-2/3 h-fit lg:h-full mb-6 lg:mb-0 m-auto rounded-md lg:w-1/3 xl:w-1/4 bg-gray-200 py-5 px-3">
+        <div className={`${id === null ? "pb-16 lg:pb-0" : null} w-11/12 sm:w-2/3 h-fit lg:h-full mb-6 lg:mb-0 m-auto rounded-md lg:w-1/3 xl:w-1/4 bg-gray-200 py-5 px-3`}>
             {id === null ? (
                 <>
                     <h3 className="text-3xl md:text-5xl text-center mt-8 p-4 font-semibold text-gray-700">Edita un producto</h3>
@@ -102,7 +105,7 @@ function FruitEditor({id, fruit, token, setSuccess, success}) {
                         <input type="text" onChange={(e) => setOldPrice(e.target.value)} className="mt-3 w-8/12 bg-gray-200 px-1 border border-transparent border-b-blue-500" placeholder={fruit.oldPrice ? fruit.oldPrice : "-"} value={oldPrice} />
 
                     </div>
-                    <div className="w-1/2">
+                    <div className="w-1/2 flex flex-wrap justify-center">
                     <h3 className="w-full text-gray-500 text-center">¿Es una oferta?</h3>
 
                     <div className="mt-3 relative w-2/3 m-auto bg-gray-300 rounded-lg border border-gray-500">
@@ -115,8 +118,14 @@ function FruitEditor({id, fruit, token, setSuccess, success}) {
                             No
                         </button>
                     </div>
-                    {fruit.hasOwnProperty("state") ? (
-                         <><h3 className="w-full text-gray-500 mt-8">¿El producto esta activo?</h3>     
+                    
+                    
+                    <h3 className="w-full text-gray-500 text-center mt-8">Cantidad:</h3>
+                    <input type="text" onChange={(e) => setCantidad(e.target.value)} className="mt-3 w-10/12 bg-gray-200 px-1 border border-transparent border-b-blue-500" placeholder={fruit.cantidad ? fruit.cantidad : "1kg?"} value={cantidad} />
+
+                  
+                         <div className={`${fruit.hasOwnProperty("state") ? "" : "-z-10"}`}>
+                            <h3 className="w-full text-gray-500 mt-8">¿El producto esta activo?</h3>     
                          <div className="mt-3 relative w-2/3 m-auto bg-gray-300 rounded-lg border border-gray-500">
                              <div className={`absolute w-1/2 h-full transform duration-100 ${state === true ? " bg-green-400 rounded-l-lg" : "rounded-r-lg translate-x-full bg-red-500 "}`}></div> 
      
@@ -126,8 +135,8 @@ function FruitEditor({id, fruit, token, setSuccess, success}) {
                              <button type="button" className="w-1/2 z-20 relative" onClick={() => setState(false)}>
                                  No
                              </button>
-                         </div></>
-                   ) : null }
+                         </div></div>
+                   
                    
                         </div>
                         
