@@ -46,7 +46,7 @@ function Catalogo() {
                         <img src={fruitImg[f.name.toLowerCase()]} alt={f.name}/>
                         <h3 className='mt-2 text-md lg:text-lg text-center text-gray-800 font-medium'>
                             {f.name.charAt(0).toUpperCase() + f.name.slice(1).toLowerCase()}
-                            {f.cantidad && f.cantidad != 0 && f.cantidad != "0" ?  <span className='font-normal'> {" "}({cantidadTransform(`${f.cantidad}`)})</span> : null}
+                            {f.cantidad && f.cantidad !== 0 && f.cantidad !== "0" ?  <span className='font-normal'> {" "}({cantidadTransform(`${f.cantidad}`)})</span> : null}
                         </h3>
                         <p className='text-md font-normal text-gray-700 text-center'>
                             {f.offer && f.oldPrice ? <><span className='text-gray-400 line-through'>${f.oldPrice}</span><span className='ml-3 text-gray-900 underline font-medium'>${f.price}</span></> : `$${f.price}`}
