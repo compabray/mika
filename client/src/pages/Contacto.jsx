@@ -22,18 +22,18 @@ function Contacto(){
                     </div>
                     <div className="flex items-center mt-8">
                         <FontAwesomeIcon icon={faWhatsapp} className="w-8 lg:w-12 text-3xl lg:text-5xl text-gray-200 mr-4 p-3 bg-blue-800 rounded-full" />
-                        <div className="text-lg lg:text-xl font-medium">+598 099 999 999 </div>
+                        <div className="text-lg">+598 98 441 504 <br/> +598 92 548 970 </div>
                     </div>
                     <h2 className="w-full text-2xl lg:text-3xl font-bold text-center mt-8">Redes Sociales:</h2>
                     <div className="flex flex-wrap justify-around">
-                    <a href="https://instagram.com/" target="_blank" className="flex justify-center items-center mt-4 lg:mt-8 w-3/4 lg:w-2/5 border rounded-3xl border-blue-800 p-4 lg:py-2 lg:px-4 text-blue-800 hover:text-gray-100 hover:bg-blue-600 duration-300" >
+                    <a href="https://www.instagram.com/verduleria_sin_fronteras_" target="_blank" className="flex justify-center items-center mt-4 lg:mt-8 w-3/4 lg:w-2/5 border rounded-3xl border-blue-800 p-4 lg:py-2 lg:px-4 text-blue-800 hover:text-gray-100 hover:bg-blue-600 duration-300" >
                         <FontAwesomeIcon icon={faInstagram} className="text-3xl lg:text-5xl mr-4" />
                         <div className="text-lg lg:text-xl font-medium">Instagram</div>
                     </a>
-                    <a href="https://facebook.com/" target="_blank" className="flex justify-center items-center mt-4 lg:mt-8 w-3/4 lg:w-2/5 border rounded-3xl border-blue-800 py-2 px-4 text-blue-800 hover:text-gray-100 hover:bg-blue-600 duration-300" >
+                    {/* <a href="https://facebook.com/" target="_blank" className="flex justify-center items-center mt-4 lg:mt-8 w-3/4 lg:w-2/5 border rounded-3xl border-blue-800 py-2 px-4 text-blue-800 hover:text-gray-100 hover:bg-blue-600 duration-300" >
                         <FontAwesomeIcon icon={faFacebook} size="3x" className="mr-4" />
                         <div className="text-xl font-medium">Facebook</div>
-                    </a>
+                    </a> */}
                     </div>
                 </div>
 

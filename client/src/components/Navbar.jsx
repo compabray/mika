@@ -56,7 +56,7 @@ function Navbar() {
     }
 
     const routeList = <>
-                <a href="/" className={`p-4 lg:text-sm xl:text-base hover:text-blue-500 duration-200 ${activeSection === "/" ? "text-blue-500" : null }`}>Inicio</a>
+                {/* <a href="/" className={`p-4 lg:text-sm xl:text-base hover:text-blue-500 duration-200 ${activeSection === "/" ? "text-blue-500" : null }`}>Inicio</a> */}
                 <a href="/catalogo" className={`p-4 lg:text-sm xl:text-base hover:text-blue-500 duration-200 ${activeSection === "/catalogo" ? "text-blue-500" : null }`}>Catalogo</a>
                 <a href="/productos-estacionales" className={`p-4 lg:text-sm xl:text-base hover:text-blue-500 duration-200 ${activeSection === "/productos-estacionales" ? "text-blue-500" : null }`}>Productos estacionales</a>
                 <a href="/contacto" className={`p-4 lg:text-sm xl:text-base hover:text-blue-500 duration-200 ${activeSection === "/contacto" ? "text-blue-500" : null }`}>Contacto</a>

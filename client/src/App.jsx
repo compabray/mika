@@ -22,7 +22,7 @@ function App() {
       <div className='flex-grow mt-24'>
         <Routes>
           {/* Rutas publicas */}
-          <Route path='/' element={<Home/>}/>
+          <Route path='/' element={<Navigate to="/catalogo"/>}/>
           <Route path='/catalogo' element={<Catalogo/>}/>
           <Route path='/productos-estacionales' element={<ProductosEstacionales/>}/>
           <Route path='/contacto' element={<Contacto/>}/>
