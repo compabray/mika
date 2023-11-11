@@ -44,8 +44,8 @@ function Catalogo() {
     return (
         <div className='w-full'> 
         
-            <h1 className='w-full text-center text-2xl lg:text-4xl font-bold text-gray-900'>Catalogo de frutas y verduras</h1>
-            <h2 className='w-full text-center text-md lg:text-xl text-gray-700 mt-5'>Aquí estan todas las frutas y verduras disponibles en nuestro negocio! </h2>
+            <h1 className='w-full text-center text-2xl lg:text-4xl font-bold text-gray-900'>Catalogo de productos</h1>
+            <h2 className='w-full text-center text-md lg:text-xl text-gray-700 mt-5'>Aquí estan todos los productos disponibles en nuestro negocio! </h2>
             <div className='lg:w-2/3 flex flex-wrap justify-evenly m-auto mt-8'>
                 {sortedFruits.map((f, index) => (
                     <div className={`relative w-2/5 lg:w-1/6 m-2 h-fit`} key={index}>
