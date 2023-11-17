@@ -10,13 +10,13 @@ function Catalogo() {
     const [sFruit, setSFruit] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/fruit/all')
+        axios.get('/api/fruit/all')
             .then(res => {
                 setFruit(res.data);
             })
             .catch(err => console.log(err))
 
-        axios.get('http://localhost:5000/api/sfruit/all')
+        axios.get('/api/sfruit/all')
             .then(res => {
                 setSFruit(res.data);
             })

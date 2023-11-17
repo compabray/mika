@@ -21,7 +21,7 @@ function Admin () {
     
             const checkToken = async () => {
                 try {
-                    const res = await axios.post('http://localhost:5000/api/admin/checkToken', {
+                    const res = await axios.post('/api/admin/checkToken', {
                         token: token
                     });
             

@@ -9,7 +9,7 @@ function Catalogo() {
     const [sFruit, setSFruit] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/sfruit/all')
+        axios.get('/api/sfruit/all')
             .then(res => {
                 setSFruit(res.data);
             })

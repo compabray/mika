@@ -27,7 +27,7 @@ function AdminSF () {
     
             const checkToken = async () => {
                 try {
-                    const res = await axios.post('http://localhost:5000/api/admin/checkToken', {
+                    const res = await axios.post('/api/admin/checkToken', {
                         token: token
                     });
             
@@ -47,7 +47,7 @@ function AdminSF () {
     }, [navigate, token])
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/sfruit/all')
+        axios.get('/api/sfruit/all')
             .then(res => {
                 setSFruit(res.data);
             })
