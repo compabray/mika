@@ -45,7 +45,7 @@ function FruitEditor({id, fruit, token, setSuccess, success}) {
         }
         
         if(fruit.hasOwnProperty('state')) {
-            axios.put("http://localhost:5000/api/sfruit/update/", sFruitData, {
+            axios.put("/api/sfruit/update/", sFruitData, {
                 headers: {
                     'Authorization': token
                 }
@@ -59,7 +59,7 @@ function FruitEditor({id, fruit, token, setSuccess, success}) {
                 })
                 .catch(err => console.log(err))
             } else {
-                axios.put("http://localhost:5000/api/fruit/update/", fruitData, {
+                axios.put("/api/fruit/update/", fruitData, {
                     headers: {
                         'Authorization': token
                     }
