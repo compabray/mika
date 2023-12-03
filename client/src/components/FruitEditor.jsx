@@ -11,6 +11,10 @@ function FruitEditor({id, fruit, token, setSuccess, success}) {
     const [offer, setOffer] = useState(false);
     const [state, setState] = useState(null);
     const [cantidad, setCantidad] = useState(0);
+    const [errorO, setErrorO] = useState(null);
+    const [errorP, setErrorP] = useState(null);
+
+
 // Reset the form when the id changes 
     useEffect(() => {
         if (fruit) {
@@ -26,6 +30,22 @@ function FruitEditor({id, fruit, token, setSuccess, success}) {
     const handleFormSubmit = (e) => {
         
         e.preventDefault();
+
+        if (isNaN(price)) {
+            setErrorP("El precio debe ser un numero");
+            setTimeout(() => {
+                setErrorP(null);
+            }, 5000)
+            return;
+        }
+
+        if (isNaN(oldPrice)) {
+            setErrorO("El precio anterior debe ser un numero");
+            setTimeout(() => {
+                setErrorO(null);
+            }, 5000)
+            return;
+        }
 
         const sFruitData = {
             name: fruit.name,
@@ -95,14 +115,15 @@ function FruitEditor({id, fruit, token, setSuccess, success}) {
                     }>
                     <div className="w-1/2">
                     <h3 className="w-full text-gray-500">Precio:</h3>
-                    
+                        
+                        {errorP && <p className="text-red-600 text-sm font-medium">{errorP}</p>}
                         <span className="w-1/12 mr-2 mt-3">$</span>
                         <input type="text" onChange={(e) => setPrice(e.target.value)} className="mt-3 w-8/12 bg-gray-200 px-1 border border-transparent border-b-blue-500" placeholder={fruit.price} value={price} />
 
                     <h3 className="w-full text-gray-500 mt-8">Precio Anterior:</h3>
-
+                        {errorO && <p className="text-red-600 text-sm font-medium">{errorO}</p>}
                         <span className="w-1/12 mr-2 mt-3">$</span>
-                        <input type="text" onChange={(e) => setOldPrice(e.target.value)} className="mt-3 w-8/12 bg-gray-200 px-1 border border-transparent border-b-blue-500" placeholder={fruit.oldPrice ? fruit.oldPrice : "-"} value={oldPrice} />
+                        <input type="text"  onChange={(e) => setOldPrice(e.target.value)} className="mt-3 w-8/12 bg-gray-200 px-1 border border-transparent border-b-blue-500" placeholder={fruit.oldPrice ? fruit.oldPrice : "-"} value={oldPrice} />
 
                     </div>
                     <div className="w-1/2 flex flex-wrap justify-center">
@@ -139,8 +160,9 @@ function FruitEditor({id, fruit, token, setSuccess, success}) {
                    
                    
                         </div>
-                        
-                        <button type="submit" className="w-2/3 mt-8 m-auto bg-blue-800 text-white py-2 rounded-md">{success ? "Guardado!" : "Guardar"}</button>
+
+
+                        <button type="submit" className="w-2/3  m-auto bg-blue-800 text-white py-2 rounded-md">{success ? "Guardado!" : "Guardar"}</button>
                     
                      
                       
